@@ -45,6 +45,14 @@
                     <button type="button" id="togglePassword" class="toggle-password">Show</button>
                 </div>
 
+                <ul id="password-requirements" style="display: none;">
+                    <li id="reqLength">At least 8 characters</li>
+                    <li id="reqUppercase">At least 1 uppercase letter</li>
+                    <li id="reqLowercase">At least 1 lowercase letter</li>
+                    <li id="reqNumber">At least 1 number</li>
+                    <li id="reqSymbol">At least 1 symbol</li>
+                </ul>
+
                 <label for="confirmPassword">CONFIRM PASSWORD</label>
                 <div class="confirmPass-wrapper">
                     <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required/>

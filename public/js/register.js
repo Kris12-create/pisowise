@@ -3,6 +3,7 @@ const passToggleBtn = document.getElementById("togglePassword");
 const confirmPassToggleBtn = document.getElementById("toggleConfirmPassword");
 const password = document.getElementById("password");
 const confirmPass = document.getElementById("confirmPassword");
+const passwordRequirements = document.getElementById("password-requirements")
 
 passToggleBtn.addEventListener("click", ()=>{
     if(password.type === "password")
@@ -18,6 +19,17 @@ confirmPassToggleBtn.addEventListener("click", ()=>{
         confirmPass.type = "password";
 })
 
+password.addEventListener("focus", () =>{
+    passwordRequirements.style.display = "block";
+});
+
+password.addEventListener("focus", () => {
+    passwordRequirements.classList.add("show");
+});
+
+password.addEventListener("blur", () => {
+    passwordRequirements.classList.remove("show");
+});
 
 // step 2 form
 const monthlyInput = document.getElementById("monthlyBudget");

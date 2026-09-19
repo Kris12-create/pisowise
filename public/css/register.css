@@ -8,8 +8,9 @@
     --primary-text-color: #2D0000;
     --secondary-text-color: #757D6F;
     --tertiary-color: #DDD8C4;
+    --error-color: #B3261E;
+    --success-color: #2E7D32;
 }
-
 body {
     font-family: "Outfit", sans-serif;
 }
@@ -140,6 +141,18 @@ input, #nextBtn, #backBtn, #submitBtn{
     color: var(--primary-text-color);
 }
 
+input:focus {
+    outline: 2px solid var(--secondary-text-color);
+}
+
+input:not(:placeholder-shown):invalid {
+    border: 2px solid var(--error-color);
+}
+
+input:not(:placeholder-shown):valid {
+    border: 2px solid var(--success-color);
+}
+
 input::placeholder{
     color: var(--primary-text-color);
     opacity: 0.5;
@@ -183,4 +196,39 @@ input::placeholder{
 #haveAcc{
     color: var(--secondary-text-color);
     font-weight: 300;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+    color: var(--primary-text-color);
+    font-weight: 600;
+}
+
+ul {
+    padding-left: 5px;
+}
+
+ul li{
+    font-weight: 300;
+    list-style: "x ";
+    list-style-position: inside;
+    margin: 0;
+    font-size: small;
+}
+
+#password-requirements {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    padding-left: 0;
+    margin: 15px 0px 0px; 
+}
+
+#password-requirements.show {
+    max-height: 200px; 
+    opacity: 1;
 }
