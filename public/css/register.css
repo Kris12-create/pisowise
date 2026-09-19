@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+#step1{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none;
+}
+
+input{
+    height: 18px;
+}

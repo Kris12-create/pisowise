@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PisoWise</title>
+    <link rel="stylesheet" href="./css/register.css"/>
 </head>
 <body>
     <main class="container">
@@ -29,11 +30,16 @@
                 <input type="email" id="email" name="email" placeholder="maria.santos@gmail.com" required/>
 
                 <label for="password">PASSWORD</label>
-                <input type="password" id="password" name="password" minlength="8" placeholder="Min. length of 8" required/>
-                <div id="password-error"></div>
+                <div class="password-wrapper">
+                    <input type="password" id="password" name="password" minlength="8" placeholder="Min. length of 8" required/>
+                    <button type="button" id="togglePassword" class="toggle-password">👁</button>
+                </div>
 
                 <label for="confirmPassword">CONFIRM PASSWORD</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required/>
+                <div class="confirmPass-wrapper">
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required/>
+                    <button type="button" id="toggleConfirmPassword" class="toggle-password">👁</button>
+                </div>
 
                 <button type="button" id="nextBtn">Next</button>
             </div>
@@ -49,14 +55,14 @@
 
                 <div class="budget">
                     <label for="weeklyBudget">Weekly Budget</label>
-                    <p>How much per week?</p>
-                    <input type="number" id="weeklyBudget" name="weeklyBudget" placeholder="1200" min="0" required/>
+                    <p>How much per week? (auto-suggested, editable)</p>
+                    <input type="number" id="weeklyBudget" name="weeklyBudget" placeholder="1200" min="0"/>
                 </div>
 
                 <div class="budget">
                     <label for="dailyBudget">Daily Budget</label>
-                    <p>How much per day?</p>
-                    <input type="number" id="dailyBudget" name="dailyBudget" placeholder="200" min="0" required/>
+                    <p>How much per day? (auto-suggested, editable)</p>
+                    <input type="number" id="dailyBudget" name="dailyBudget" placeholder="200" min="0"/>
                 </div>
 
                 <button type="button" id="backBtn">Back</button>
@@ -68,4 +74,6 @@
         <p>Already have an account? <a href="login.php">Sign in</a></p>
     </main>
 </body>
+
+<script src="./js/register.js"></script>
 </html>
