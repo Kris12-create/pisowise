@@ -4,20 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PisoWise</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/register.css"/>
 </head>
 <body>
     <main class="container">
         <div class="header">
             <img class="logo" src="" alt="PisoWise logo"/>
-            <p>PisoWise</p>
-            <p>Student Expense Tracker</p>
+            <div aria-hidden="true" class="header-text">
+                <p id="title">PisoWise</p>
+                <p id="subTitle">Student Expense Tracker</p>
+            </div>
         </div>
 
         <div class="steps">
-            <p aria-hidden="true">1</p>
+            <p aria-hidden="true" id="stepsOne">1</p>
             <div id="line_in_step"></div>
-            <p aria-hidden="true">2</p>
+            <p aria-hidden="true" id="stepsTwo">2</p>
+        </div>
+
+        <div class="createAccount-wrapper">
+            <h1>Create account</h1>
+            <p>Start tracking your expenses for free.</p>
         </div>
 
         <form action="" method="post">
@@ -32,13 +42,13 @@
                 <label for="password">PASSWORD</label>
                 <div class="password-wrapper">
                     <input type="password" id="password" name="password" minlength="8" placeholder="Min. length of 8" required/>
-                    <button type="button" id="togglePassword" class="toggle-password">👁</button>
+                    <button type="button" id="togglePassword" class="toggle-password">Show</button>
                 </div>
 
                 <label for="confirmPassword">CONFIRM PASSWORD</label>
                 <div class="confirmPass-wrapper">
                     <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required/>
-                    <button type="button" id="toggleConfirmPassword" class="toggle-password">👁</button>
+                    <button type="button" id="toggleConfirmPassword" class="toggle-password">Show</button>
                 </div>
 
                 <button type="button" id="nextBtn">Next</button>
@@ -66,14 +76,15 @@
                 </div>
 
                 <button type="button" id="backBtn">Back</button>
-                <button type="submit">Create Account</button>
+                <button type="submit" id="submitBtn">Create Account</button>
             </div>
 
         </form>
 
-        <p>Already have an account? <a href="login.php">Sign in</a></p>
+        <p id="haveAcc">Already have an account? <a href="login.php">Sign in</a></p>
     </main>
+    <script src="./js/register.js"></script>
 </body>
 
-<script src="./js/register.js"></script>
+
 </html>
