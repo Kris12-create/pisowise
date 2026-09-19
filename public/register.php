@@ -20,19 +20,18 @@
         </div>
 
         <div class="steps">
-            <p aria-hidden="true" id="stepsOne">1</p>
+            <p aria-hidden="true" id="stepsOne" class="active">1</p>
             <div id="line_in_step"></div>
             <p aria-hidden="true" id="stepsTwo">2</p>
-        </div>
-
-        <div class="createAccount-wrapper">
-            <h1>Create account</h1>
-            <p>Start tracking your expenses for free.</p>
         </div>
 
         <form action="" method="post">
 
             <div id="step1">
+                <div class="createAccount-wrapper">
+                    <h1>Create account</h1>
+                    <p>Start tracking your expenses for free.</p>
+                </div>
                 <label for="name">FULL NAME</label>
                 <input type="text" id="name" name="name" placeholder="Maria Santos" required/>
 
@@ -63,28 +62,34 @@
             </div>
 
             <div id="step2" style="display: none;">
-                <p>Set your spending limits. Leave a field at ₱0 if you don't want to track that period.</p>
+                <div class="createAccount-wrapper">
+                    <h1>Set your budgets</h1>
+<p>Set your spending limits — leave a field at ₱0 if you don't want to track that period. You can adjust these anytime later.</p>
+                </div>
+                
 
                 <div class="budget">
                     <label for="monthlyBudget">Monthly Budget</label>
                     <p>How much per month?</p>
-                    <input type="number" id="monthlyBudget" name="monthlyBudget" placeholder="5000" min="0" required/>
+                    <input type="number" id="monthlyBudget" name="monthlyBudget" placeholder="5000" min="0" step="0.01" required/>
                 </div>
 
                 <div class="budget">
                     <label for="weeklyBudget">Weekly Budget</label>
                     <p>How much per week? (auto-suggested, editable)</p>
-                    <input type="number" id="weeklyBudget" name="weeklyBudget" placeholder="1200" min="0"/>
+                    <input type="number" id="weeklyBudget" name="weeklyBudget" placeholder="1200" min="0" step="0.01"/>
                 </div>
 
                 <div class="budget">
                     <label for="dailyBudget">Daily Budget</label>
                     <p>How much per day? (auto-suggested, editable)</p>
-                    <input type="number" id="dailyBudget" name="dailyBudget" placeholder="200" min="0"/>
+                    <input type="number" id="dailyBudget" name="dailyBudget" placeholder="200" min="0" step="0.01"/>
                 </div>
 
-                <button type="button" id="backBtn">Back</button>
-                <button type="submit" id="submitBtn">Create Account</button>
+                <div id="btn_container">
+                    <button type="button" id="backBtn">Back</button>
+                    <button type="submit" id="submitBtn">Create Account</button>
+                </div>
             </div>
 
         </form>

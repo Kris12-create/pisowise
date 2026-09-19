@@ -43,8 +43,8 @@ const backBtn = document.getElementById("backBtn");
 let weeklyTouched = false;
 let dailyTouched = false;
 
-weeklyInput.addEventListener("input", () => { weeklyTouched = true; });
-dailyInput.addEventListener("input", () => { dailyTouched = true; });
+weeklyInput.addEventListener("focus", () => { weeklyTouched = true; });
+dailyInput.addEventListener("focus", () => { dailyTouched = true; });
 
 monthlyInput.addEventListener("input", () => {
     const monthly = parseFloat(monthlyInput.value || 0);
@@ -64,14 +64,30 @@ monthlyInput.addEventListener("input", () => {
     }
 });
 
-nextBtn.addEventListener("click", ()=>{
+nextBtn.addEventListener("click", () => {
     stepOne.style.display = "none";
-    stepTwo.style.display = "block";
+    stepTwo.style.display = "flex";   // not "block"
 });
 
-backBtn.addEventListener("click", ()=>{
-    stepOne.style.display = "block";
+backBtn.addEventListener("click", () => {
+    stepOne.style.display = "flex";   // matches its CSS display type
     stepTwo.style.display = "none";
+});
+
+
+const stepsOne = document.getElementById("stepsOne");
+const stepsTwo = document.getElementById("stepsTwo");
+
+nextBtn.addEventListener("click", () => {
+    stepOne.style.display = "none";
+    stepTwo.style.display = "flex";
+    stepsTwo.classList.add("active");
+});
+
+backBtn.addEventListener("click", () => {
+    stepOne.style.display = "flex";
+    stepTwo.style.display = "none";
+    stepsTwo.classList.remove("active");
 });
 
 
