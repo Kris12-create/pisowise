@@ -1,3 +1,15 @@
+<?php
+    
+    if($_SERVER['REQUEST_METHOD'] === "post"){
+        $name = $_POST['name'] ?? "" ;
+        $email = $_POST['email'] ?? "";
+        $password = $_POST['password'] ?? ""; 
+
+    }
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +56,8 @@
                     <button type="button" id="togglePassword" class="toggle-password">Show</button>
                 </div>
 
-                <ul id="password-requirements" style="display: none;">
+                <!-- removed the inline style -->
+                <ul id="password-requirements">
                     <li id="reqLength">At least 8 characters</li>
                     <li id="reqUppercase">At least 1 uppercase letter</li>
                     <li id="reqLowercase">At least 1 lowercase letter</li>
@@ -57,34 +70,44 @@
                     <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required/>
                     <button type="button" id="toggleConfirmPassword" class="toggle-password">Show</button>
                 </div>
+                <span id="confirmSamePass"></span>
 
-                <button type="button" id="nextBtn">Next</button>
+                <button type="submit" id="nextBtn">Next</button>
             </div>
 
             <div id="step2" style="display: none;">
                 <div class="createAccount-wrapper">
                     <h1>Set your budgets</h1>
-<p>Set your spending limits — leave a field at ₱0 if you don't want to track that period. You can adjust these anytime later.</p>
+                    <p>Set your spending limits — leave a field at ₱0 if you don't want to track that period. You can adjust these anytime later.</p>
                 </div>
                 
 
-                <div class="budget">
-                    <label for="monthlyBudget">Monthly Budget</label>
-                    <p>How much per month?</p>
+            <div class="budget">
+                <label for="monthlyBudget">Monthly Budget</label>
+                <p>How much per month?</p>
+                <div class="input-currency-wrapper">
+                    <span class="currency-symbol">₱</span>
                     <input type="number" id="monthlyBudget" name="monthlyBudget" placeholder="5000" min="0" step="0.01" required/>
                 </div>
+            </div>
 
-                <div class="budget">
-                    <label for="weeklyBudget">Weekly Budget</label>
-                    <p>How much per week? (auto-suggested, editable)</p>
+            <div class="budget">
+                <label for="weeklyBudget">Weekly Budget</label>
+                <p>How much per week? (auto-suggested, editable)</p>
+                <div class="input-currency-wrapper">
+                    <span class="currency-symbol">₱</span>
                     <input type="number" id="weeklyBudget" name="weeklyBudget" placeholder="1200" min="0" step="0.01"/>
                 </div>
+            </div>
 
-                <div class="budget">
-                    <label for="dailyBudget">Daily Budget</label>
-                    <p>How much per day? (auto-suggested, editable)</p>
+            <div class="budget">
+                <label for="dailyBudget">Daily Budget</label>
+                <p>How much per day? (auto-suggested, editable)</p>
+                <div class="input-currency-wrapper">
+                    <span class="currency-symbol">₱</span>
                     <input type="number" id="dailyBudget" name="dailyBudget" placeholder="200" min="0" step="0.01"/>
                 </div>
+            </div>
 
                 <div id="btn_container">
                     <button type="button" id="backBtn">Back</button>
@@ -98,6 +121,4 @@
     </main>
     <script src="./js/register.js"></script>
 </body>
-
-
 </html>
