@@ -10,7 +10,8 @@ const stepTwo = document.getElementById("step2");
 const backBtn = document.getElementById("backBtn");
 const stepsOne = document.getElementById("stepsOne");
 const stepsTwo = document.getElementById("stepsTwo");
-
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
 
 passToggleBtn.addEventListener("click", () => {
     if (password.type === "password")
@@ -42,13 +43,14 @@ const reqSymbol = document.getElementById("reqSymbol");
 
 function validatePassword() {
     const passValue = password.value;
+    let allPassed = true;
 
     const requirements = [
         [/.{8,}/, reqLength],
         [/[A-Z]/, reqUpperCase],
         [/[a-z]/, reqLowerCase],
         [/[0-9]/, reqNumber],
-        [/[!@#$%^&*(),.?":{}|<>]/, reqSymbol]
+        [/[!@#$%^&*(),.?":{}|<>/\\]/, reqSymbol]
     ];
 
     requirements.forEach(([regex, element]) => {
@@ -56,19 +58,41 @@ function validatePassword() {
             element.style.color = "#2E7D32";
         } else {
             element.style.color = "#B3261E";
+            allPassed = false;
         }
     });
+
+    password.setCustomValidity(allPassed ? "" : "Password doesn't meet all requirements");
+    return allPassed;
 }
 
-function confirmPassword(){
-    if(confirmPass.value = password.value){
-        
+function validateConfirm() {
+    const errorElement = document.getElementById("confirmSamePass");
+    const matches = confirmPass.value !== "" && confirmPass.value === password.value;
+
+    if (confirmPass.value === "") {
+        errorElement.textContent = "";
+        errorElement.classList.remove("error", "success");
+    } else if (matches) {
+        errorElement.textContent = "Passwords match";
+        errorElement.classList.remove("error");
+        errorElement.classList.add("success");
+    } else {
+        errorElement.textContent = "Passwords do not match";
+        errorElement.classList.remove("success");
+        errorElement.classList.add("error");
     }
+
+    confirmPass.setCustomValidity(matches ? "" : "Passwords do not match");
+    return matches;
 }
 
-password.addEventListener("input", ()=>{
+password.addEventListener("input", () => {
     validatePassword();
+    validateConfirm();
 });
+
+confirmPass.addEventListener("input", validateConfirm);
 
 // step 2 form
 const monthlyInput = document.getElementById("monthlyBudget");
@@ -105,6 +129,12 @@ monthlyInput.addEventListener("input", () => {
 });
 
 nextBtn.addEventListener("click", () => {
+    const step1Fields = [nameInput, emailInput, password, confirmPass];
+
+    for (const field of step1Fields) {
+        if (!field.reportValidity()) return;
+    }
+
     stepOne.style.display = "none";
     stepTwo.style.display = "flex";
     stepsTwo.classList.add("active");
@@ -114,5 +144,13 @@ backBtn.addEventListener("click", () => {
     stepOne.style.display = "flex";
     stepTwo.style.display = "none";
     stepsTwo.classList.remove("active");
+});
+
+const form = document.querySelector("form");
+stepOne.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && e.target.tagName !== "BUTTON") {
+        e.preventDefault();
+        nextBtn.click();
+    }
 });
 

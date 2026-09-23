@@ -1,10 +1,16 @@
 <?php
+    require_once __DIR__ . '/../includes/functions.php';
     
-    if($_SERVER['REQUEST_METHOD'] === "post"){
+    if($_SERVER['REQUEST_METHOD'] === "POST"){
         $name = $_POST['name'] ?? "" ;
         $email = $_POST['email'] ?? "";
         $password = $_POST['password'] ?? ""; 
+        $confirmPass = $_POST['confirmPassword'] ?? "";
+        $monthly = $_POST['monthlyBudget'] ?? "";
+        $weekly = $_POST['weeklyBudget'] ?? "";
+        $daily = $_POST['dailyBudget'] ?? "";
 
+        $errors = validateRegistrationForm($name, $email, $password, $confirmPass, $monthly, $weekly, $daily);
     }
 ?>
 
@@ -69,10 +75,10 @@
                 <div class="confirmPass-wrapper">
                     <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required/>
                     <button type="button" id="toggleConfirmPassword" class="toggle-password">Show</button>
-                </div>
-                <span id="confirmSamePass"></span>
+                </div> 
+                <span id="confirmSamePass" class="error"></span>
 
-                <button type="submit" id="nextBtn">Next</button>
+                <button type="submit" id="nextBtn" >Next</button>
             </div>
 
             <div id="step2" style="display: none;">

@@ -168,7 +168,6 @@ input::placeholder{
     border: 0px transparent;
     color: var(--secondary-color);
     font-weight: 600;
-    color: var(--secondary-color);
 }
 
 .password-wrapper, .confirmPass-wrapper {
@@ -233,11 +232,6 @@ a:active {
     list-style: "✕ ";
     list-style-position: inside;
     color: var(--error-color);
-}
-
-#password-requirements li.valid {
-    list-style: "✓ ";
-    color: var(--success-color);
 }
 
 .budget{
@@ -309,4 +303,12 @@ a:active {
 .container .input-currency-wrapper,
 .container .budget {
     width: 100%;
+}
+
+.error{
+    color: var(--error-color);
+}
+
+.success{
+    color: var(--success-color);
 }
