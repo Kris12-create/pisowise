@@ -312,3 +312,7 @@ a:active {
 .success{
     color: var(--success-color);
 }
+
+.heading-logIn{
+    margin: 20px 0;
+}
